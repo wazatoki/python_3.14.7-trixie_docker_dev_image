@@ -1,0 +1,17 @@
+services:
+  my_ssh_container:
+    build: 
+      context: ./build
+      dockerfile: Dockerfile
+      args:
+        - GIT_USER_NAME=${GIT_USER_NAME}
+        - GIT_USER_EMAIL=$}{GIT_USER_EMAIL}
+    image: ssh-dev-container
+    container_name: my_ssh_container
+    ports:
+      - "2222:22"
+    volumes:
+      - ${HOST_HOME}/.ssh/id_rsa.pub:/home/dev/.ssh/authorized_keys:ro
+      - ../../project:/home/dev/project
+      - ../../dotfiles/.vimrc:/home/dev/.vimrc
+    restart: unless-stopped
