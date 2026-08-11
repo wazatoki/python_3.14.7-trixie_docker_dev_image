@@ -1,7 +1,7 @@
 services:
   my_ssh_container:
     build: 
-      context: ./build
+      context: .
       dockerfile: Dockerfile
       args:
         - GIT_USER_NAME=${GIT_USER_NAME}

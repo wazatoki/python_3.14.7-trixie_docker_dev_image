@@ -63,22 +63,28 @@ EOF
 # 4. pyproject.toml の生成
 cat <<EOF > "${PROJECT_NAME}/pyproject.toml"
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "${PROJECT_NAME}"
 version = "0.1.0"
 description = "A Python project following Clean Architecture with src layout"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.14.7"
 dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "pip-tools>=7.6.0",
+    "pytest>=9.1.1",
+]
 
 [project.scripts]
 ${PROJECT_NAME} = "${PROJECT_NAME}.main:main"
 
-[tool.hatch.build.targets.wheel]
-packages = ["src/${PROJECT_NAME}"]
+[tool.setuptools.packages.find]
+where = ["src"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
