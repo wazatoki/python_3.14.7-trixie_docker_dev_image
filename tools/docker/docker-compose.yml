@@ -12,6 +12,6 @@ services:
       - "2222:22"
     volumes:
       - ${HOST_HOME}/.ssh/id_rsa.pub:/home/dev/.ssh/authorized_keys:ro
-      - ../../project:/home/dev/project
+      - ../../workspace:/home/dev/workspace
       - ../../dotfiles/.vimrc:/home/dev/.vimrc
     restart: unless-stopped

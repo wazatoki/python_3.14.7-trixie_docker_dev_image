@@ -46,9 +46,9 @@ RUN mkdir -p /home/dev/.ssh && \
     chmod 700 /home/dev/.ssh
 
 # projectディレクトリの作成
-RUN mkdir -p /home/dev/project && \
-    chown dev:dev /home/dev/project && \
-    chmod 700 /home/dev/project
+RUN mkdir -p /home/dev/workspace && \
+    chown dev:dev /home/dev/workspace && \
+    chmod 700 /home/dev/workspace
 	
 # vim設定ディレクトリの準備
 RUN curl -fLo /home/dev/.vim/autoload/plug.vim --create-dirs \
@@ -59,7 +59,7 @@ WORKDIR /home/dev/project
 RUN git config --global user.name GIT_USER_NAME && \
     git config --global user.email GIT_USER_EMAIL && \
 	git config --global init.defaultBranch main && \
-	git config --global --add safe.directory /home/dev/project
+	git config --global --add safe.directory /home/dev/workspace
 
 # コンテナ起動時にSSHサービスをフォアグラウンドで実行
 USER root
