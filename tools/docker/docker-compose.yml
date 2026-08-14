@@ -1,5 +1,5 @@
 services:
-  my_ssh_container:
+  python_3.14.7_ssh_container:
     build: 
       context: .
       dockerfile: Dockerfile
