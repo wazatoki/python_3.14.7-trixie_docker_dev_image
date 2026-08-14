@@ -1,13 +1,13 @@
 services:
-  python_3.14.7_ssh_container:
+  python_3.14.7_ssh_div_container:
     build: 
       context: .
       dockerfile: Dockerfile
       args:
         - GIT_USER_NAME=${GIT_USER_NAME}
         - GIT_USER_EMAIL=$}{GIT_USER_EMAIL}
-    image: ssh-dev-container
-    container_name: my_ssh_container
+    image: python_3.14.7_ssh-dev-image
+    container_name: python_3.14.7_ssh_div_container
     ports:
       - "2222:22"
     volumes:
